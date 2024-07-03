@@ -31,3 +31,9 @@ body {
     text-wrap: balance;
   }
 }
+
+
+.pixel {
+  width: var(--pixel-size, 10px);
+  height: var(--pixel-size, 10px);
+}
