@@ -58,7 +58,7 @@ export default function Home() {
     img.src = res;
     img.onload = async () => {
       const scale = img.width / img.height;
-      const width = 1000;
+      const width = 800;
       const height = width / scale;
       setImageSize([width, height]);
       // canvas.width = width;
@@ -92,9 +92,9 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center">
-      <div className="flex h-fit">
+      <div className="flex h-fit mt-5">
         <div>
-          <h1 className="text-5xl">Pixel Art Builder</h1>
+          <h1 className="text-5xl text-center ">Pixel Art Builder</h1>
           <UploadImage onDropFiles={handleDragAndDropFiles} onFileChange={handleFileChange} />
         </div>
         {image && <Controls
@@ -110,15 +110,15 @@ export default function Home() {
       <div className="mt-2">
         {!image && "Upload an image to get started."}
         {image && (
-          <div className={twMerge("flex flex-col items-center", !image && "hidden", imageOverlap && 'relative')}>
+          <div className={twMerge("flex w-full items-center", !image && "hidden", imageOverlap && 'relative')}>
             <NextImage src={image} alt="Uploaded Image" width={imageSize[0]} height={imageSize[1]} />
-            <div className={twMerge("flex flex-wrap", imageOverlap && 'absolute')} style={{ width: imageSize[0], height: imageSize[1] }}>
+            <div className={twMerge("flex flex-wrap bg-white", imageOverlap && 'absolute bg-transparent')} style={{ width: imageSize[0], height: imageSize[1] }}>
               {Array.from({ length: imageSize[0] / pixelSize }).map((_, i) => (
                 <div key={pixelSize.toString() + i} className="flex flex-col">
                   {Array.from({ length: imageSize[1] / pixelSize }).map((_, j) => (
                     <div
                       key={pixelSize.toString() + j}
-                      className="pixel border border-white"
+                      className={twMerge("pixel border border-gray-700", imageOverlap && 'border-white')}
                       style={{ '--pixel-size': `${pixelSize}px` }}
                       onClick={paintPixel}
                       onMouseMove={paintPixel}

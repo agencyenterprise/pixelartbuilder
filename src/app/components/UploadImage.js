@@ -16,7 +16,7 @@ export function UploadImage({ onDropFiles, onFileChange }) {
 
   return (
     <div
-      className="flex justify-center w-full sm:w-[50%]"
+      className="flex justify-center w-full p-2"
       onDragOver={preventDefaultDragAndDrop}
       onDragEnter={preventDefaultDragAndDrop}
       onDragLeave={preventDefaultDragAndDrop}
@@ -24,7 +24,7 @@ export function UploadImage({ onDropFiles, onFileChange }) {
     >
       <label
         htmlFor="dropzone-file"
-        className="flex flex-col items-center justify-center w-[450px] h-40 border-2 transition-colors text-white border-gray-300 border-dashed rounded-lg cursor-pointer bg-background dark:bg-background hover:bg-background/80 hover:text-gray-600"
+        className="flex flex-col items-center justify-center w-[450px] h-full border-2 transition-colors text-black border-gray-600 dark:text-white dark:border-gray-300 border-dashed rounded-lg cursor-pointer hover:bg-background/80 hover:text-gray-600"
       >
         <div className="flex flex-col items-center justify-center pt-5 pb-6">
           <svg

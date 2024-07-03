@@ -15,7 +15,7 @@ export function Controls({ imageOverlap, setImageOverlap, setPixelSize, pixelSiz
           Images overlap
         </li>
       </ul>
-      <h3>Pixel Size - {pixelSize}</h3>
+      <h3>Pixel Size - {pixelSize}px</h3>
       <input
         type="range"
         min="5"
@@ -24,12 +24,12 @@ export function Controls({ imageOverlap, setImageOverlap, setPixelSize, pixelSiz
         onChange={(e) => setPixelSize(e.target.value)}
       />
       <h3>Color Palette</h3>
-      <ul className="flex flex-wrap gap-2 max-w-[280px]">
+      <ul className="flex flex-wrap gap-2 max-w-[360px]">
         {colorPalette.map((color, i) => (
           <li
             key={i}
             className={
-              twMerge('rounded-full size-5', colorSelected === color && 'border-2 border-green-600')
+              twMerge('rounded-full size-7', colorSelected === color && 'border-2 border-green-600')
             }
             style={{ backgroundColor: color }}
           >
