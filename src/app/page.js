@@ -9,6 +9,7 @@ import { prominent } from 'color.js'
 import { UploadImage } from "./components/UploadImage";
 import { Controls } from "./components/Controls";
 import { MobileWarning } from "./components/MobileWarning";
+import { PixelPainter } from "./components/PixelPainter";
 
 export default function Home() {
   const [image, setImage] = useState(null);
@@ -16,7 +17,6 @@ export default function Home() {
   const [pixelSize, setPixelSize] = useState(15);
   const [imageOverlap, setImageOverlap] = useState(true);
   const [colorPalette, setColorPalette] = useState([]);
-  const [isMouseDown, setIsMouseDown] = useState(false);
   const [colorSelected, setColorSelected] = useState('#000000');
 
   const handleFileChange = async (e) => {
@@ -72,25 +72,6 @@ export default function Home() {
     };
   };
 
-  const paintPixel = (e) => {
-    if (isMouseDown || e.type === 'click') {
-      e.target.style.backgroundColor = colorSelected;
-    }
-  };
-
-  useEffect(() => {
-    const handleMouseDown = () => setIsMouseDown(true);
-    const handleMouseUp = () => setIsMouseDown(false);
-
-    document.addEventListener('mousedown', handleMouseDown);
-    document.addEventListener('mouseup', handleMouseUp);
-
-    return () => {
-      document.removeEventListener('mousedown', handleMouseDown);
-      document.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, [isMouseDown, colorSelected]);
-
   return (
     <main className="flex min-h-screen flex-col items-center">
       <div className="hidden md:flex flex-wrap h-fit mt-5 gap-5">
@@ -113,21 +94,13 @@ export default function Home() {
         {image && (
           <div className={twMerge("flex w-full items-center", !image && "hidden", imageOverlap && 'relative')}>
             <NextImage src={image} alt="Uploaded Image" width={imageSize[0]} height={imageSize[1]} />
-            <div className={twMerge("flex flex-wrap bg-white", imageOverlap && 'absolute bg-transparent')} style={{ width: imageSize[0], height: imageSize[1] }}>
-              {Array.from({ length: imageSize[0] / pixelSize }).map((_, i) => (
-                <div key={pixelSize.toString() + i} className="flex flex-col">
-                  {Array.from({ length: imageSize[1] / pixelSize }).map((_, j) => (
-                    <div
-                      key={pixelSize.toString() + j}
-                      className={twMerge("pixel border border-gray-700", imageOverlap && 'border-white')}
-                      style={{ '--pixel-size': `${pixelSize}px` }}
-                      onClick={paintPixel}
-                      onMouseMove={paintPixel}
-                    />
-                  ))}
-                </div>
-              ))}
-            </div>
+            <PixelPainter
+              image={image}
+              imageOverlap={imageOverlap}
+              imageSize={imageSize}
+              pixelSize={pixelSize}
+              colorSelected={colorSelected}
+            />
             {/* <canvas id="canvas" width="1000" height="1000"></canvas> */}
           </div>
         )}
