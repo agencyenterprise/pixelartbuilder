@@ -8,6 +8,7 @@ import { prominent } from 'color.js'
 
 import { UploadImage } from "./components/UploadImage";
 import { Controls } from "./components/Controls";
+import { MobileWarning } from "./components/MobileWarning";
 
 export default function Home() {
   const [image, setImage] = useState(null);
@@ -92,7 +93,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center">
-      <div className="flex h-fit mt-5">
+      <div className="hidden md:flex flex-wrap h-fit mt-5 gap-5">
         <div>
           <h1 className="text-5xl text-center ">Pixel Art Builder</h1>
           <UploadImage onDropFiles={handleDragAndDropFiles} onFileChange={handleFileChange} />
@@ -107,7 +108,7 @@ export default function Home() {
           setColorSelected={setColorSelected}
         />}
       </div>
-      <div className="mt-2">
+      <div className="hidden md:block mt-2 overflow-hidden">
         {!image && "Upload an image to get started."}
         {image && (
           <div className={twMerge("flex w-full items-center", !image && "hidden", imageOverlap && 'relative')}>
@@ -131,6 +132,7 @@ export default function Home() {
           </div>
         )}
       </div>
+      <MobileWarning />
     </main>
   );
 }
