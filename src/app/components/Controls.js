@@ -11,6 +11,8 @@ export function Controls({
   setColorSelected,
   hideImage,
   setHideImage,
+  isBeadsArt,
+  setIsBeadsArt,
 }){
   return (
     <div className="space-y-2 border border-foreground rounded-lg p-4">
@@ -31,6 +33,14 @@ export function Controls({
             checked={hideImage}
           />
           Hide Image
+        </li>
+        <li className="flex items-center gap-2">
+          <Switch
+            className="switch"
+            onChange={() => setIsBeadsArt(!isBeadsArt)}
+            checked={isBeadsArt}
+          />
+          Beads Art
         </li>
       </ul>
       <h3>Pixel Size - {pixelSize}px</h3>

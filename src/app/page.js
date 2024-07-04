@@ -1,7 +1,7 @@
 'use client';
 
 import { default as NextImage } from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import imageResize from "image-resize";
 import { twMerge } from "tailwind-merge";
 import { prominent } from 'color.js'
@@ -15,10 +15,13 @@ export default function Home() {
   const [image, setImage] = useState(null);
   const [imageSize, setImageSize] = useState([0, 0]); // [width, height]
   const [pixelSize, setPixelSize] = useState(15);
-  const [imageOverlap, setImageOverlap] = useState(true);
-  const [hideImage, setHideImage] = useState(true);
   const [colorPalette, setColorPalette] = useState([]);
   const [colorSelected, setColorSelected] = useState('#000000');
+
+  // Controls
+  const [imageOverlap, setImageOverlap] = useState(true);
+  const [hideImage, setHideImage] = useState(false);
+  const [isBeadsArt, setIsBeadsArt] = useState(true);
 
   const handleFileChange = async (e) => {
     e.preventDefault();
@@ -90,19 +93,27 @@ export default function Home() {
           setColorSelected={setColorSelected}
           hideImage={hideImage}
           setHideImage={setHideImage}
+          isBeadsArt={isBeadsArt}
+          setIsBeadsArt={setIsBeadsArt}
         />}
       </div>
-      <div className="hidden md:block mt-2 overflow-hidden">
+      <div className="hidden md:block mt-2">
         {!image && "Upload an image to get started."}
         {image && (
           <div className={twMerge("flex w-full items-center", !image && "hidden", imageOverlap && 'relative')}>
-            <NextImage className={twMerge(!hideImage && 'invisible')} src={image} alt="Uploaded Image" width={imageSize[0]} height={imageSize[1]} />
+            <NextImage
+              className={twMerge(hideImage && 'invisible')}
+              src={image}
+              alt="Uploaded Image"
+              width={imageSize[0]} height={imageSize[1]}
+            />
             <PixelPainter
               image={image}
               imageOverlap={imageOverlap}
               imageSize={imageSize}
               pixelSize={pixelSize}
               colorSelected={colorSelected}
+              isBeadsArt={isBeadsArt}
             />
             {/* <canvas id="canvas" width="1000" height="1000"></canvas> */}
           </div>
