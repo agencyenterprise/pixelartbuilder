@@ -1,6 +1,8 @@
 'use client';
 
-export function UploadImage({ onDropFiles, onFileChange }) {
+import { twMerge } from "tailwind-merge";
+
+export function UploadImage({ onDropFiles, onFileChange, className }) {
   function preventDefaultDragAndDrop(e) {
     e.preventDefault();
   };
@@ -16,7 +18,7 @@ export function UploadImage({ onDropFiles, onFileChange }) {
 
   return (
     <div
-      className="flex justify-center w-full p-2"
+      className={twMerge("flex justify-center p-2", className)}
       onDragOver={preventDefaultDragAndDrop}
       onDragEnter={preventDefaultDragAndDrop}
       onDragLeave={preventDefaultDragAndDrop}
@@ -24,7 +26,7 @@ export function UploadImage({ onDropFiles, onFileChange }) {
     >
       <label
         htmlFor="dropzone-file"
-        className="flex flex-col items-center justify-center w-full h-full border-2 transition-colors text-black border-gray-600 border-dashed rounded-lg cursor-pointer hover:bg-foreground/80 hover:text-gray-300 p-2"
+        className="flex flex-col items-center justify-center w-[400px] h-[300px] border-2 transition-colors text-black border-logo-bg border-dashed rounded-lg cursor-pointer hover:bg-logo-bg/70 hover:text-gray-300 p-2"
       >
         <div className="flex flex-col items-center justify-center pt-5 pb-6">
           <svg

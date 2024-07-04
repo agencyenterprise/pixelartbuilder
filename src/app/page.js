@@ -10,6 +10,7 @@ import { UploadImage } from "./components/UploadImage";
 import { Controls } from "./components/Controls";
 import { MobileWarning } from "./components/MobileWarning";
 import { PixelPainter } from "./components/PixelPainter";
+import { Intro } from "./components/Intro";
 
 export default function Home() {
   const [image, setImage] = useState(null);
@@ -73,10 +74,8 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center grow my-3">
-      <div className="print:hidden hidden md:flex flex-wrap h-fit mt-5 gap-5">
-        <div>
-          <UploadImage onDropFiles={handleDragAndDropFiles} onFileChange={handleFileChange} />
-        </div>
+      <div className="print:hidden hidden md:flex flex-wrap justify-between h-fit mt-5 gap-5 container">
+        <UploadImage className={twMerge(!image && "mx-auto")} onDropFiles={handleDragAndDropFiles} onFileChange={handleFileChange} />
         {image && <Controls
           imageOverlap={imageOverlap}
           setImageOverlap={setImageOverlap}
@@ -92,7 +91,7 @@ export default function Home() {
         />}
       </div>
       <div className="hidden print:block md:block mt-2 overflow-hidden">
-        {!image && "Upload an image to get started."}
+        {!image && <Intro />}
         {image && (
           <div className={twMerge("flex w-full items-center", !image && "hidden", imageOverlap && 'relative')}>
             <NextImage

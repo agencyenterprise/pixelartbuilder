@@ -13,6 +13,7 @@ module.exports = {
       colors: {
         background: 'rgba(var(--background-rgb))',
         foreground: 'rgba(var(--foreground-rgb))',
+        ['logo-bg']: '#BC0042',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
