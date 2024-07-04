@@ -78,7 +78,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center">
-      <div className="hidden md:flex flex-wrap h-fit mt-5 gap-5">
+      <div className="print:hidden hidden md:flex flex-wrap h-fit mt-5 gap-5">
         <div>
           <h1 className="text-5xl text-center ">Pixel Art Builder</h1>
           <UploadImage onDropFiles={handleDragAndDropFiles} onFileChange={handleFileChange} />
@@ -97,12 +97,12 @@ export default function Home() {
           setIsBeadsArt={setIsBeadsArt}
         />}
       </div>
-      <div className="hidden md:block mt-2">
+      <div className="hidden print:block md:block mt-2">
         {!image && "Upload an image to get started."}
         {image && (
           <div className={twMerge("flex w-full items-center", !image && "hidden", imageOverlap && 'relative')}>
             <NextImage
-              className={twMerge(hideImage && 'invisible')}
+              className={twMerge('print:invisible', hideImage && 'invisible')}
               src={image}
               alt="Uploaded Image"
               width={imageSize[0]} height={imageSize[1]}

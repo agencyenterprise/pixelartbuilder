@@ -37,3 +37,10 @@ body {
   width: var(--pixel-size, 10px);
   height: var(--pixel-size, 10px);
 }
+
+@media print {
+    .pixel {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}

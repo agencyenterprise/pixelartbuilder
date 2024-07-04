@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screen: {
+        print: { raw: "print" },
+      },
       colors: {
         background: 'rgb(var(--background-end-rgb))',
         foreground: 'rgb(var(--foreground-rgb))',
