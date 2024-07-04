@@ -16,6 +16,7 @@ export default function Home() {
   const [imageSize, setImageSize] = useState([0, 0]); // [width, height]
   const [pixelSize, setPixelSize] = useState(15);
   const [imageOverlap, setImageOverlap] = useState(true);
+  const [hideImage, setHideImage] = useState(true);
   const [colorPalette, setColorPalette] = useState([]);
   const [colorSelected, setColorSelected] = useState('#000000');
 
@@ -87,13 +88,15 @@ export default function Home() {
           colorPalette={colorPalette}
           colorSelected={colorSelected}
           setColorSelected={setColorSelected}
+          hideImage={hideImage}
+          setHideImage={setHideImage}
         />}
       </div>
       <div className="hidden md:block mt-2 overflow-hidden">
         {!image && "Upload an image to get started."}
         {image && (
           <div className={twMerge("flex w-full items-center", !image && "hidden", imageOverlap && 'relative')}>
-            <NextImage src={image} alt="Uploaded Image" width={imageSize[0]} height={imageSize[1]} />
+            <NextImage className={twMerge(!hideImage && 'invisible')} src={image} alt="Uploaded Image" width={imageSize[0]} height={imageSize[1]} />
             <PixelPainter
               image={image}
               imageOverlap={imageOverlap}

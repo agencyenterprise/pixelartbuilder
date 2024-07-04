@@ -1,11 +1,21 @@
 import Switch from "react-switch";
 import { twMerge } from "tailwind-merge";
 
-export function Controls({ imageOverlap, setImageOverlap, setPixelSize, pixelSize, colorPalette, colorSelected, setColorSelected}) {
+export function Controls({
+  imageOverlap,
+  setImageOverlap,
+  setPixelSize,
+  pixelSize,
+  colorPalette,
+  colorSelected,
+  setColorSelected,
+  hideImage,
+  setHideImage,
+}){
   return (
     <div className="space-y-2 border border-foreground rounded-lg p-4">
-      <h2>Controls</h2>
-      <ul>
+      <h2 className="font-bold">Controls</h2>
+      <ul className="flex gap-2">
         <li className="flex items-center gap-2">
           <Switch
             className="switch"
@@ -13,6 +23,14 @@ export function Controls({ imageOverlap, setImageOverlap, setPixelSize, pixelSiz
             checked={imageOverlap}
           />
           Images overlap
+        </li>
+        <li className="flex items-center gap-2">
+          <Switch
+            className="switch"
+            onChange={() => setHideImage(!hideImage)}
+            checked={hideImage}
+          />
+          Hide Image
         </li>
       </ul>
       <h3>Pixel Size - {pixelSize}px</h3>
@@ -23,8 +41,8 @@ export function Controls({ imageOverlap, setImageOverlap, setPixelSize, pixelSiz
         value={pixelSize}
         onChange={(e) => setPixelSize(e.target.value)}
       />
-      <h3>Color Palette</h3>
-      <ul className="flex flex-wrap gap-2 max-w-[360px]">
+      <h2 className="border-t border-foreground pt-2 font-bold">Color Palette</h2>
+      <ul className="flex flex-wrap gap-2 md:max-w-[360px]">
         {colorPalette.map((color, i) => (
           <li
             key={i}
