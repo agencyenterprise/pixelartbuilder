@@ -11,8 +11,8 @@ module.exports = {
         print: { raw: "print" },
       },
       colors: {
-        background: 'rgb(var(--background-end-rgb))',
-        foreground: 'rgb(var(--foreground-rgb))',
+        background: 'rgba(var(--background-rgb))',
+        foreground: 'rgba(var(--foreground-rgb))',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
