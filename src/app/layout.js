@@ -1,6 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Header } from "./components/Header";
 import Script from "next/script";
+import { Footer } from "./components/Footer";
+import { twJoin } from "tailwind-merge";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +37,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={twJoin(inter.className, 'min-h-screen flex flex-col')}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
       <Script
         src="https://scripts.simpleanalyticscdn.com/latest.js"
         strategy="afterInteractive"

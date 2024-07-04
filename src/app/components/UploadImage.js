@@ -24,7 +24,7 @@ export function UploadImage({ onDropFiles, onFileChange }) {
     >
       <label
         htmlFor="dropzone-file"
-        className="flex flex-col items-center justify-center w-full h-full border-2 transition-colors text-black border-gray-600 dark:text-white dark:border-gray-300 border-dashed rounded-lg cursor-pointer hover:bg-background/80 hover:text-gray-600 p-2"
+        className="flex flex-col items-center justify-center w-full h-full border-2 transition-colors text-black border-gray-600 border-dashed rounded-lg cursor-pointer hover:bg-foreground/80 hover:text-gray-300 p-2"
       >
         <div className="flex flex-col items-center justify-center pt-5 pb-6">
           <svg

@@ -145,19 +145,20 @@ export function PixelPainter({
   }, [pixelSize, imageSize]);
 
   const [width, height] = imageSize;
+  console.log('imageOverlap', imageSize);
   return (
     <div
       key={image}
       className={twMerge("flex flex-wrap bg-white", imageOverlap && 'absolute bg-transparent')}
       style={{ width: imageSize[0], height: imageSize[1] }}
     >
-      {Array.from({ length: height / pixelSize }).map((_, x) => (
+      {Array.from({ length: Math.round(height / pixelSize) }).map((_, x) => (
         <div key={pixelSize.toString() + x} className="flex">
-          {Array.from({ length: width / pixelSize }).map((_, y) => (
+          {Array.from({ length: Math.round(width / pixelSize) }).map((_, y) => (
             <div
               key={pixelSize.toString() + y}
-              className={twMerge("pixel border border-gray-700", imageOverlap && 'border-white')}
-              style={{ '--pixel-size': `${pixelSize}px` }}
+              className={twMerge("pixel box-content border border-gray-700 print:border-0", imageOverlap && 'border-white')}
+              style={{ '--pixel-size': `${pixelSize-2}px` }}
               onClick={(e) => {
                 paintPixel(e, x, y);
               }}
