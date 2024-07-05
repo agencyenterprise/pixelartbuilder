@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Pixel Art Builder",
-  description: "Easily create pixel/beads art with this free online tool. Upload an image, adjust pixel size, and start painting!",
+  description: "Create pixel art online with Pixel Art Builder. Upload images, customize pixels, and paint digitally for free. Start now!",
   icons: [
     {
       url: "/favicon.png",
@@ -21,7 +21,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Pixel Art Builder",
     description:
-      "Easily create pixel/beads art with this free online tool. Upload an image, adjust pixel size, and start painting!",
+      "Create pixel art online with Pixel Art Builder. Upload images, customize pixels, and paint digitally for free. Start now!",
     images: "https://buildpixelart.com/og.png",
   },
   openGraph: {
@@ -29,7 +29,7 @@ export const metadata = {
     url: "https://buildpixelart.com",
     title: "Pixel Art Builder",
     description:
-      "Easily create pixel/beads art with this free online tool. Upload an image, adjust pixel size, and start painting!",
+      "Create pixel art online with Pixel Art Builder. Upload images, customize pixels, and paint digitally for free. Start now!",
     images: "https://buildpixelart.com/og.png",
   },
 };
