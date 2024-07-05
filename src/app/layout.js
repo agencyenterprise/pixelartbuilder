@@ -22,15 +22,15 @@ export const metadata = {
     title: "Pixel Art Builder",
     description:
       "Easily create pixel/beads art with this free online tool. Upload an image, adjust pixel size, and start painting!",
-    images: "https://beadsartbuilder.com/og.png",
+    images: "https://buildpixelart.com/og.png",
   },
   openGraph: {
     type: "website",
-    url: "https://beadsartbuilder.com",
+    url: "https://buildpixelart.com",
     title: "Pixel Art Builder",
     description:
       "Easily create pixel/beads art with this free online tool. Upload an image, adjust pixel size, and start painting!",
-    images: "https://beadsartbuilder.com/og.png",
+    images: "https://buildpixelart.com/og.png",
   },
 };
 
